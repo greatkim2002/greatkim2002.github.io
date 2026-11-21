@@ -4,32 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>김영광 | 유틸리티 직무 구직중</title>
-<meta name="description" content="김영광 · 유틸리티 직무 구직중 · 에너지관리기사">
+<meta name="description" content="김영광 · 유틸리티 직무 구직중 · 에너지관리기사 · 공조냉동기계산업기사">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one calm reading column, label column on the left at desktop, stacked on phones */
+/* Layout: deep-teal hero band with a faint drafting grid, then one calm reading column with a label column on desktop */
 :root {
-  --bg: #f7f9f9;
+  --bg: #f6f8f8;
   --surface: #ffffff;
-  --fg: #16201f;
-  --muted: #5d6b6a;
-  --line: #dde4e3;
-  --accent: #0f6b66;
-  --accent-soft: #e3f0ee;
+  --fg: #142120;
+  --muted: #5b6a69;
+  --line: #dce4e3;
+  --accent: #0d6a65;
+  --accent-soft: #e2f0ee;
+  --band: #0b3f3c;
+  --band-2: #0f5a55;
+  --band-fg: #f2faf9;
+  --band-muted: #a9cbc7;
+  --glow: #3fc1b3;
   --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1615; --surface: #151f1e; --fg: #e6eeed; --muted: #93a3a1; --line: #263432;
-    --accent: #5cc2b8; --accent-soft: #17302d; color-scheme: dark;
+    --bg: #0d1413; --surface: #131d1c; --fg: #e5eeed; --muted: #92a3a1; --line: #243331;
+    --accent: #5cc6ba; --accent-soft: #15302c; --band: #082b29; --band-2: #0c423e;
+    --band-fg: #eef8f7; --band-muted: #93b9b5; --glow: #3fc1b3; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0f1615; --surface: #151f1e; --fg: #e6eeed; --muted: #93a3a1; --line: #263432;
-  --accent: #5cc2b8; --accent-soft: #17302d; color-scheme: dark;
+  --bg: #0d1413; --surface: #131d1c; --fg: #e5eeed; --muted: #92a3a1; --line: #243331;
+  --accent: #5cc6ba; --accent-soft: #15302c; --band: #082b29; --band-2: #0c423e;
+  --band-fg: #eef8f7; --band-muted: #93b9b5; --glow: #3fc1b3; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
@@ -40,89 +47,142 @@ body {
   -webkit-font-smoothing: antialiased;
   word-break: keep-all; overflow-wrap: break-word;
 }
-.wrap {
-  max-width: 820px; margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 72px 48px;
-  display: flex; flex-direction: column; gap: 56px;
+.inner {
+  max-width: 860px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-/* Hero */
-.hero { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+/* Hero band */
+.hero {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(520px 320px at 88% 0%, color-mix(in srgb, var(--glow) 28%, transparent), transparent 70%),
+    linear-gradient(160deg, var(--band-2), var(--band) 70%);
+  color: var(--band-fg);
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--band-fg) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--band-fg) 7%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: linear-gradient(115deg, transparent 20%, #000 75%);
+          mask-image: linear-gradient(115deg, transparent 20%, #000 75%);
+}
+.hero .inner { position: relative; padding-block: 80px 64px; display: flex; flex-direction: column; gap: 28px; }
+.id { display: flex; gap: 28px; align-items: center; }
 .mono-mark {
-  width: 92px; height: 92px; border-radius: 50%; flex: none;
+  width: 96px; height: 96px; border-radius: 50%; flex: none;
   display: grid; place-items: center;
-  background: var(--accent-soft); color: var(--accent);
-  font-weight: 600; font-size: 30px;
-  border: 1px solid var(--line);
+  background: var(--band-fg); color: var(--band);
+  font-weight: 700; font-size: 34px;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--band-fg) 14%, transparent);
 }
-.hero-text { min-width: 0; flex: 1 1 320px; display: flex; flex-direction: column; gap: 4px; }
-.eyebrow { font-family: var(--font-mono); font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
-h1 { margin: 0; font-size: clamp(32px, 6vw, 44px); line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
-.tagline { margin: 2px 0 0; font-size: 19px; color: var(--fg); font-weight: 500; }
-.status {
-  align-self: flex-start; margin-top: 10px;
+.hero-text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; color: var(--band-muted); letter-spacing: 0.16em; }
+h1 { margin: 0; font-size: clamp(34px, 6vw, 48px); line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; }
+.tagline { margin: 4px 0 0; font-size: 20px; font-weight: 500; color: var(--band-fg); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; color: var(--accent); background: var(--accent-soft);
-  padding: 4px 12px; border-radius: 999px;
+  font-size: 13px; padding: 5px 12px; border-radius: 999px;
+  background: color-mix(in srgb, var(--band-fg) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--band-fg) 22%, transparent);
+  color: var(--band-fg);
 }
-.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.chip.live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--glow); box-shadow: 0 0 0 3px color-mix(in srgb, var(--glow) 30%, transparent); }
 
-/* Sections */
-section { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 8px 32px; border-top: 1px solid var(--line); padding-top: 28px; }
-section > h2 { margin: 0; font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0.02em; padding-top: 3px; }
-.body { min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+/* Main column */
+main .inner { padding-block: 56px 48px; display: flex; flex-direction: column; gap: 52px; }
+section { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px 36px; }
+section > h2 {
+  margin: 0; padding-top: 2px;
+  font-size: 15px; font-weight: 600; color: var(--fg);
+  display: flex; flex-direction: column; gap: 8px;
+}
+section > h2::before { content: ""; width: 22px; height: 3px; border-radius: 2px; background: var(--accent); }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 .body p { margin: 0; max-width: 62ch; }
+.lead { font-size: 17px; line-height: 1.85; }
+.lead strong { color: var(--accent); font-weight: 600; }
 
-.facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-.facts div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+.facts { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.facts div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
 .facts dt { font-size: 12px; color: var(--muted); }
-.facts dd { margin: 0; font-weight: 600; font-size: 15px; }
+.facts dd { margin: 2px 0 0; font-weight: 600; font-size: 15px; }
 
-.timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
-.timeline li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; }
-.timeline .when { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
-.timeline strong { display: block; font-weight: 600; }
-.timeline span.sub { font-size: 14px; color: var(--muted); }
-
-.certs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.cert { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; }
-.cert strong { font-weight: 600; }
-.cert span { font-size: 13px; color: var(--muted); }
-.cert.key { border-color: var(--accent); }
-.cert.key span { color: var(--accent); }
-
-.contact { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 16px; }
-.contact .addr { font-family: var(--font-mono); font-size: 15px; user-select: all; }
-.copy {
-  font: inherit; font-size: 13px; cursor: pointer;
-  color: var(--accent); background: transparent;
-  border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px;
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; display: flex; flex-direction: column; gap: 22px; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+.timeline li { position: relative; padding-left: 30px; display: flex; flex-direction: column; }
+.timeline li::before {
+  content: ""; position: absolute; left: 0; top: 7px; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--muted);
 }
-.copy:hover { border-color: var(--accent); }
+.timeline li.now::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.timeline .when { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+.timeline li.now .when { color: var(--accent); }
+.timeline strong { font-weight: 600; font-size: 16px; }
+.timeline .sub { font-size: 14px; color: var(--muted); }
 
-footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; }
+.certs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cert {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.cert > div { min-width: 0; display: flex; flex-direction: column; }
+.cert strong { font-weight: 600; }
+.cert .issuer { font-size: 13px; color: var(--muted); }
+.cert .badge {
+  flex: none; font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 999px;
+}
+.cert.key { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+
+.contact-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px;
+}
+.contact-card .k { font-size: 12px; color: var(--muted); display: block; }
+.contact-card .addr { font-family: var(--font-mono); font-size: 15px; user-select: all; word-break: break-all; }
+.copy {
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  color: var(--surface); background: var(--accent);
+  border: 0; border-radius: 8px; padding: 7px 14px;
+}
+.copy:hover { filter: brightness(1.08); }
+
+footer .inner { padding-block: 24px 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+
+/* Load-in: visible at rest, gentle rise on load */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .d1 { animation-delay: .06s; } .d2 { animation-delay: .14s; } .d3 { animation-delay: .22s; }
+  @keyframes rise { from { transform: translateY(10px); opacity: .001; } to { transform: none; opacity: 1; } }
+}
 
 @media (max-width: 640px) {
   body { font-size: 15px; line-height: 1.7; }
-  .wrap { padding-block: 32px 28px; gap: 32px; }
+  .inner { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+  .hero .inner { padding-block: 44px 32px; gap: 20px; }
+  .id { gap: 16px; }
+  .mono-mark { width: 64px; height: 64px; font-size: 24px; box-shadow: 0 0 0 4px color-mix(in srgb, var(--band-fg) 14%, transparent); }
+  .eyebrow { font-size: 11px; letter-spacing: 0.12em; }
+  h1 { font-size: 30px; }
+  .tagline { font-size: 16px; margin-top: 2px; }
+  .chip { font-size: 12px; padding: 4px 10px; }
 
-  /* Hero: avatar beside the name, compact */
-  .hero { flex-wrap: nowrap; gap: 16px; align-items: center; }
-  .mono-mark { width: 60px; height: 60px; font-size: 22px; }
-  .hero-text { flex: 1 1 auto; gap: 0; }
-  .eyebrow { font-size: 11px; }
-  h1 { font-size: 28px; }
-  .tagline { font-size: 16px; }
-  .status { font-size: 12px; margin-top: 8px; padding: 3px 10px; }
+  main .inner { padding-block: 32px 28px; gap: 36px; }
+  section { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  section > h2 { flex-direction: row; align-items: center; gap: 10px; font-size: 15px; }
+  section > h2::before { width: 16px; }
+  .lead { font-size: 15.5px; line-height: 1.8; }
 
-  section { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-top: 22px; }
-  section > h2 { font-size: 13px; color: var(--accent); padding-top: 0; }
-
-  /* Facts and certificates: one grouped list instead of stacked cards */
+  /* Grouped lists instead of stacked cards */
   .facts, .certs {
     display: flex; flex-direction: column; gap: 0;
     background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
@@ -132,96 +192,98 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 11px 16px;
   }
   .facts div + div { border-top: 1px solid var(--line); }
-  .facts dd { font-size: 14px; text-align: right; }
-  .cert, .cert.key {
-    border: 0; border-radius: 0; background: transparent;
-    flex-direction: row; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 16px;
-  }
+  .facts dd { margin: 0; font-size: 14px; text-align: right; }
+  .cert, .cert.key { border: 0; border-radius: 0; background: transparent; padding: 12px 16px; }
   .cert + .cert { border-top: 1px solid var(--line); }
-  .cert strong { font-size: 15px; min-width: 0; }
-  .cert span { font-size: 12px; text-align: right; flex: none; max-width: 45%; }
+  .cert strong { font-size: 15px; }
+  .cert .issuer { font-size: 12px; }
 
-  .timeline { gap: 14px; }
-  .timeline li { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
-  .timeline .when { font-size: 12px; }
-
-  .contact .addr { font-size: 14px; word-break: break-all; }
+  .timeline { gap: 18px; }
+  .contact-card .addr { font-size: 14px; }
 }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="hero">
-    <div class="mono-mark" aria-hidden="true">김</div>
-    <div class="hero-text">
-      <span class="eyebrow">KIM YOUNGKWANG</span>
-      <h1>김영광</h1>
-      <p class="tagline">유틸리티 직무 구직중</p>
-      <span class="status">해군 복무중 (27년 2월 전역예정)</span>
-    </div>
-  </header>
-
-  <section aria-labelledby="about">
-    <h2 id="about">소개</h2>
-    <div class="body">
-      <p>제주대학교에서 에너지공학을 전공했고, 해군 장교로 복무하고 있습니다. 에너지관리기사와 공조냉동기계산업기사를 바탕으로 유틸리티 직무에서 일하고자 합니다.</p>
-      <dl class="facts">
-        <div><dt>출생</dt><dd>2002년 · 경기 안성</dd></div>
-        <div><dt>전공</dt><dd>에너지공학</dd></div>
-        <div><dt>군 복무</dt><dd>해군 장교 (중위)</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section aria-labelledby="history">
-    <h2 id="history">학력 · 경력</h2>
-    <div class="body">
-      <ol class="timeline" reversed>
-        <li><span class="when">복무중</span><div><strong>해군 복무중 (27년 2월 전역예정)</strong><span class="sub">대한민국 해군 장교 (중위)</span></div></li>
-        <li><span class="when">졸업</span><div><strong>제주대학교</strong><span class="sub">에너지공학전공</span></div></li>
-        <li><span class="when">졸업</span><div><strong>안법고등학교</strong><span class="sub">경기 안성</span></div></li>
-      </ol>
-    </div>
-  </section>
-
-  <section aria-labelledby="certs">
-    <h2 id="certs">자격 · 면허</h2>
-    <div class="body">
-      <ul class="certs">
-        <li class="cert key"><strong>에너지관리기사</strong><span>국가기술자격</span></li>
-        <li class="cert key"><strong>공조냉동기계산업기사</strong><span>국가기술자격</span></li>
-        <li class="cert"><strong>CSWA</strong><span>SOLIDWORKS 인증</span></li>
-        <li class="cert"><strong>컴퓨터활용능력 2급</strong><span>대한상공회의소</span></li>
-        <li class="cert"><strong>자동차운전면허 1종 보통</strong><span>운전면허</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section aria-labelledby="contact">
-    <h2 id="contact">연락처</h2>
-    <div class="body">
-      <div class="contact">
-        <span class="addr" id="email">greatkim2002@naver.com</span>
-        <button type="button" class="copy" id="copy-email">복사</button>
+<header class="hero">
+  <div class="inner">
+    <div class="id rise">
+      <div class="mono-mark" aria-hidden="true">김</div>
+      <div class="hero-text">
+        <span class="eyebrow">KIM YOUNGKWANG</span>
+        <h1>김영광</h1>
+        <p class="tagline">유틸리티 직무 구직중</p>
       </div>
     </div>
-  </section>
+    <div class="chips rise d1">
+      <span class="chip live">해군 복무중 (27년 2월 전역예정)</span>
+      <span class="chip">에너지관리기사</span>
+      <span class="chip">공조냉동기계산업기사</span>
+    </div>
+  </div>
+</header>
 
-  <footer>© 2026 김영광</footer>
-</div>
+<main>
+  <div class="inner">
+    <section aria-labelledby="about" class="rise d2">
+      <h2 id="about">소개</h2>
+      <div class="body">
+        <p class="lead">제주대학교에서 에너지공학을 전공했고, 해군 장교로 복무하고 있습니다.<br><strong>에너지관리기사</strong>와 <strong>공조냉동기계산업기사</strong>를 바탕으로 유틸리티 직무에서 일하고자 합니다.</p>
+        <dl class="facts">
+          <div><dt>출생</dt><dd>2002년 · 경기 안성</dd></div>
+          <div><dt>전공</dt><dd>에너지공학</dd></div>
+          <div><dt>군 복무</dt><dd>해군 장교 (중위)</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section aria-labelledby="history" class="rise d3">
+      <h2 id="history">학력 · 경력</h2>
+      <div class="body">
+        <ol class="timeline" reversed>
+          <li class="now"><span class="when">복무중 · 2027.02 전역예정</span><strong>대한민국 해군</strong><span class="sub">해군 장교 (중위)</span></li>
+          <li><span class="when">졸업</span><strong>제주대학교</strong><span class="sub">에너지공학전공</span></li>
+          <li><span class="when">졸업</span><strong>안법고등학교</strong><span class="sub">경기 안성</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="certs">
+      <h2 id="certs">자격 · 면허</h2>
+      <div class="body">
+        <ul class="certs">
+          <li class="cert key"><div><strong>에너지관리기사</strong><span class="issuer">국가기술자격</span></div><span class="badge">직무 핵심</span></li>
+          <li class="cert key"><div><strong>공조냉동기계산업기사</strong><span class="issuer">국가기술자격</span></div><span class="badge">직무 핵심</span></li>
+          <li class="cert"><div><strong>CSWA</strong><span class="issuer">SOLIDWORKS 인증</span></div></li>
+          <li class="cert"><div><strong>컴퓨터활용능력 2급</strong><span class="issuer">대한상공회의소</span></div></li>
+          <li class="cert"><div><strong>자동차운전면허 1종 보통</strong><span class="issuer">운전면허</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="contact">
+      <h2 id="contact">연락처</h2>
+      <div class="body">
+        <div class="contact-card">
+          <div><span class="k">Email</span><span class="addr" id="email">greatkim2002@naver.com</span></div>
+          <button type="button" class="copy" id="copy-email">복사</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><div class="inner">© 2026 김영광</div></footer>
 
 <script>
 document.getElementById('copy-email').addEventListener('click', function () {
-  var btn = this, text = document.getElementById('email').textContent;
+  var btn = this, el = document.getElementById('email');
   var done = function () { btn.textContent = '복사됨'; setTimeout(function () { btn.textContent = '복사'; }, 1600); };
-  try {
-    navigator.clipboard.writeText(text).then(done, function () { selectText(); });
-  } catch (e) { selectText(); }
   function selectText() {
-    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var r = document.createRange(); r.selectNodeContents(el);
     var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
   }
+  try { navigator.clipboard.writeText(el.textContent).then(done, selectText); } catch (e) { selectText(); }
 });
 </script>
 </body>
